@@ -19,8 +19,16 @@ def bubble_sort(*args):
             sorted_list.append(a_list.pop(n))
         # if next argument is lower, put it before.
         elif a_list[n] < sorted_list[-1]:
-            sorted_list.insert(-2, a_list.pop(n))
+            a = -1
+            while sorted_list[a] > sorted_list[0] and a_list[n] < sorted_list[a]:
+                a -= 1
+                list_index = sorted_list.index(sorted_list[a])
+                print(list_index)
+            if a_list[n] > sorted_list[a]:
+                sorted_list.insert(list_index+1, a_list.pop(n))
+            else:
+                sorted_list.insert(list_index, a_list.pop(n))
     return sorted_list
 
 
-print(bubble_sort(3, 2, 1, 5, 8, 9, 1, 3, 3, 5, 8, 19))
+print(bubble_sort(33, 67, 8, 9, 99, 101, 44, 22, 22, 22, 7, 4, 9, 7, 5, 2))
